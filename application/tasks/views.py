@@ -13,7 +13,10 @@ def tasks_index():
 
 @app.route("/tasks/", methods=["POST"])
 def tasks_create():
-    t = Task(request.form.get("name"))
+    form = TaskForm(request.form)
+
+    t = Task(form.name.data)
+    t.done = form.done.data
 
     db.session().add(t)
     db.session().commit()

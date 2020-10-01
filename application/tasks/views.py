@@ -15,6 +15,9 @@ def tasks_index():
 def tasks_create():
     form = TaskForm(request.form)
 
+    if not form.validate():
+        return render_template("tasks/new.html", form = form)
+
     t = Task(form.name.data)
     t.done = form.done.data
 

@@ -1,9 +1,11 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required
 from application.tasks.models import Task
 from application.tasks.forms import TaskForm
 
 @app.route("/tasks/new/")
+@login_required
 def tasks_form():
     return render_template("tasks/new.html", form = TaskForm())
 
@@ -12,6 +14,7 @@ def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.all())
 
 @app.route("/tasks/", methods=["POST"])
+@login_required
 def tasks_create():
     form = TaskForm(request.form)
 
@@ -27,6 +30,7 @@ def tasks_create():
     return redirect(url_for("tasks_index"))
 
 @app.route("/tasks/<task_id>/", methods=["POST"])
+@login_required
 def tasks_set_done(task_id):
 
     t = Task.query.get(task_id)

@@ -1,6 +1,6 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from application.tasks.models import Task
 from application.tasks.forms import TaskForm
 
@@ -23,6 +23,7 @@ def tasks_create():
 
     t = Task(form.name.data)
     t.done = form.done.data
+    t.account_id = current_user.id
 
     db.session().add(t)
     db.session().commit()

@@ -14,7 +14,7 @@ def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.all())
 
 @app.route("/tasks/", methods=["POST"])
-@login_required
+@login_required #(role="ADMIN")
 def tasks_create():
     form = TaskForm(request.form)
 

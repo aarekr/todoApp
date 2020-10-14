@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>Create your new account here</h3><hr><br />
+
+<form method="POST" action="{{ url_for('create_new_user') }}">
+  <table>
+    <tr>
+      <td>{{ form.username.label }}</td>
+      <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.password.label }}</td>
+      <td>{{ form.password }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{{ form.submit }}</td>
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

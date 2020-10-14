@@ -15,6 +15,8 @@ class User(Base):
 
     def __init__(self, name, username, password):
         self.name = name
+        self.username = username
+        self.password = password
 
     def get_id(self):
         return self.id

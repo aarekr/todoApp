@@ -33,7 +33,7 @@ def user_registration():
     return render_template("auth/newuserform.html", form=NewUserForm())
 
 
-@app.route("/auth/newuser")
+@app.route("/auth/newuser", methods=["POST"])
 def create_new_user():
     print ("uuden userin luonti")
     form = NewUserForm(request.form)

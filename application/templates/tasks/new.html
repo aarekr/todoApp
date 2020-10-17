@@ -1,35 +1,25 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<form method="POST" action="{{ url_for('tasks_create') }}">
+  <form method="POST" action="{{ url_for('tasks_create') }}">
     <table>
       <tr>
-	<td>
-	  {{ form.name.label }}
-	</td>
-	<td>
-	  {{ form.name }}
-	</td>
+	<td>{{ form.name.label }}</td>
+	<td>{{ form.name }}</td>
 	<td>
 	  <ul>
 	    {% for error in form.name.errors %}
-	    <li>{{ error }}</li>
+	      <li>{{ error }}</li>
 	    {% endfor %}
 	  </ul>
 	</td>
       </tr>
       <tr>
-	<td>
-	  {{ form.done.label }}
-	</td>
-	<td>
-	  {{ form.done }}
-	</td>
+	<td>{{ form.done.label }}</td>
+	<td>{{ form.done }}</td>
       </tr>
       <tr>
-	<td colspan="2">
-	  <input type="submit" value="Add a new task"/>
-	</td>
+	<td colspan="2"><input type="submit" value="Add a new task"/></td>
       </tr>
-</form>
+  </form>
 {% endblock %}

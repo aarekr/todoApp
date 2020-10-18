@@ -35,7 +35,6 @@ def user_registration():
 
 @app.route("/auth/newuser", methods=["POST"])
 def create_new_user():
-    print ("uuden userin luonti")
     form = NewUserForm(request.form)
     username = request.form.get("username")
     password = request.form.get("password")

@@ -3,10 +3,17 @@
 {% block body %}
   <h3>List of users</h3> <hr>
 
-
+<!-- with tasks -->
+{% if has_tasks is defined %}
   <h5>Users that have tasks</h5>
+  <ul>
+    {% for user in has_tasks %}
+      <li>{{user.id}} {{user.name}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
-
+<!-- no tasks -->
 {% if needs_tasks is defined %}
   <h5>The following users need work: </h5>
   <ul>

@@ -12,7 +12,8 @@ class LoginForm(FlaskForm):
 
 class NewUserForm(FlaskForm):
     username = StringField("Username", [validators.Length(min=3, max=10, message="Username has to contain 3-10 characters")])
-    password = PasswordField("Password")
+    password = PasswordField("Password", [validators.Length(min=3, max=20, message="Password has to contain 3-20 characters")])
+    password2 = PasswordField("Repeat password", [validators.Length(min=3, max=20), EqualTo('password', message="Passwords don't match")])
     submit = SubmitField("Create account")
 
     def validate_username(self, username):

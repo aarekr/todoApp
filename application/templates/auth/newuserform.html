@@ -9,10 +9,26 @@
     <tr>
       <td>{{ form.username.label }}</td>
       <td>{{ form.username }}</td>
+      <td>{% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+          {% endfor %}
+      </td>
     </tr>
     <tr>
       <td>{{ form.password.label }}</td>
       <td>{{ form.password }}</td>
+      <td>{% for error in form.password.errors %}
+            <span style="color:red;">{{ error }}</span>
+          {% endfor %}
+      </td>
+    </tr>
+    <tr>  <!-- password 2 has to match password -->
+      <td>{{ form.password2.label }}</td>
+      <td>{{ form.password2 }}</td>
+      <td>{% for error in form.password2.errors %}
+            <span style="color:red;">{{ error }}</span>
+          {% endfor %}
+      </td>
     </tr>
     <tr>
       <td></td>

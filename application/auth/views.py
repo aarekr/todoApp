@@ -36,6 +36,8 @@ def user_registration():
 @app.route("/auth/newuser", methods=["POST"])
 def create_new_user():
     form = NewUserForm(request.form)
+    if not form.validate():
+        return render_template("auth/newuserform.html", form=form)
     username = request.form.get("username")
     password = request.form.get("password")
 

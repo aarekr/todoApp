@@ -1,6 +1,14 @@
 {% extends "layout.html" %}
 
 {% block body %}
+  <h3>List of tasks</h3>
+
+  {% if total_number_of_tasks is defined %}
+    {% for users in total_number_of_tasks %}
+      <p>Total number of tasks: {{ users.total }} </p><hr>
+    {% endfor %}
+  {% endif %}
+
   <table>
     <tr>
       <th>Task</th>

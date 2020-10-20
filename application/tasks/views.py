@@ -11,7 +11,7 @@ def tasks_form():
 
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.all())
+    return render_template("tasks/list.html", tasks = Task.query.all(), total_number_of_tasks=Task.total_number_of_tasks())
 
 @app.route("/tasks/", methods=["POST"])
 @login_required #(role="ADMIN")

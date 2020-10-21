@@ -5,6 +5,10 @@ from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm, NewUserForm
 
+@app.route("/auth/allusers")
+def all_users():
+    return render_template("auth/allusers.html", all_users=User.all_users())
+
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
     if request.method == "GET":

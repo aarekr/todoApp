@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>All users</h3> <hr>
+
+{% if all_users is defined %}
+  <ul>
+    {% for user in all_users %}
+      <li>{{user.id}} {{user.name}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

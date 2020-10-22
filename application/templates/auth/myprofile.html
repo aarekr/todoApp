@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>My profile</h3> <hr>
+
+{% if my_tasks is defined %}
+  <p> my_tasks is defined </p>
+    {% for user in my_tasks %}
+      <p> {{ user.id }} {{ user.task }} </p>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}
+

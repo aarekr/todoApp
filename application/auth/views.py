@@ -9,6 +9,10 @@ from application.auth.forms import LoginForm, NewUserForm
 def all_users():
     return render_template("auth/allusers.html", all_users=User.all_users())
 
+@app.route("/auth/myprofile")
+def my_profile():
+    return render_template("auth/myprofile.html", my_tasks=User.my_tasks())
+
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
     if request.method == "GET":
@@ -31,11 +35,10 @@ def auth_logout():
     return redirect(url_for("index"))
 
 
-# creating new user
+# creating new users
 @app.route("/auth/register")
 def user_registration():
     return render_template("auth/newuserform.html", form=NewUserForm())
-
 
 @app.route("/auth/newuser", methods=["POST"])
 def create_new_user():

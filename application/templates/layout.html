@@ -18,6 +18,11 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('index') }}">Front page</a>
             </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('my_profile') }}">My profile</a>
+            </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('tasks_index') }}">List tasks</a>
             </li>

@@ -72,11 +72,11 @@ class User(Base):
             response.append({"id":row[0], "name":row[1]})
         return response
 
-    @staticmethod # my profile page tasks
+    @staticmethod # my profile page's tasks
     def my_tasks():
-        stmt = text("SELECT Account_id, Task.name FROM Task")
+        stmt = text("SELECT Account_id, Task.name, Task.done FROM Task")
         res = db.engine.execute(stmt)
         response = []
         for row in res:
-            response.append({"id":row[0], "task":row[1]})
+            response.append({"id":row[0], "task":row[1], "done":row[2]})
         return response

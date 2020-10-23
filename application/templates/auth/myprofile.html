@@ -4,12 +4,27 @@
 <h3>My profile</h3> <hr>
 
 {% if my_tasks is defined %}
-  <p> my_tasks is defined </p>
-    {% for user in my_tasks %}
-      <p> {{ user.id }} {{ user.task }} </p>
+  <h5>My tasks</h5>
+    Done
+    {% for row in my_tasks %}
+      {% if row.id == current_user.id %}
+        {% if row.done == 1 %}
+          <li>{{ row.task }}</li>
+        {% endif %}
+      {% endif %}
     {% endfor %}
+    Not done
+    {% for row in my_tasks %}
+      {% if row.id == current_user.id %}
+        {% if row.done == 0 %}
+          <li>{{ row.task }}</li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+
+
 
 {% endif %}
 
 {% endblock %}
-

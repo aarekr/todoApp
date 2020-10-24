@@ -52,5 +52,9 @@ def create_new_user():
     db.session().add(u)
     db.session().commit()
 
-    #return redirect(url_for("account_created"))
-    return redirect(url_for("index"))
+    return redirect(url_for("account_created"))
+    #return redirect(url_for("index"))
+
+@app.route("/auth/accountcreated")
+def account_created():
+    return render_template("auth/accountcreated.html")

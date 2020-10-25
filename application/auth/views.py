@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from application import app, db
 from application.auth.models import User
@@ -53,8 +53,20 @@ def create_new_user():
     db.session().commit()
 
     return redirect(url_for("account_created"))
-    #return redirect(url_for("index"))
 
 @app.route("/auth/accountcreated")
 def account_created():
     return render_template("auth/accountcreated.html")
+
+# deleting user accounts
+@app.route("/auth/deleteuser/<user_id>/", methods=["POST"])
+@login_required
+def delete_user(user_id):
+    deleted_user = User.query.get(user_id)
+    db.session().delete(deleted_user)
+    db.session().commit()
+    return redirect(url_for("account_deleted"))
+
+@app.route("/auth/accountdeleted")
+def account_deleted():
+    return render_template("auth/accountdeleted.html")

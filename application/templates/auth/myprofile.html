@@ -21,10 +21,15 @@
         {% endif %}
       {% endif %}
     {% endfor %}
+{% endif %}
 
 
-
-
+{% if current_user.id == 1 %}
+  <br /><hr>
+  <p>käyttäjä 1</p>
+  <form method="POST" action="{{ url_for('delete_user', user_id=4) }}">
+    <input type="submit" value="Remove user 4" style="width:150px"/>
+  </form>
 {% endif %}
 
 {% endblock %}

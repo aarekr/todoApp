@@ -24,3 +24,12 @@ class Task(Base):
         for row in res:
             response.append({"total":row[0]})
         return response
+
+    @staticmethod
+    def tasks_and_users():
+        stmt = text("SELECT Task.name, Task.done, Account_id FROM Task;")
+        res = db.engine.execute(stmt)
+        response = []
+        for row in res:
+            response.append({"name":row[0], "done":row[1], "account_id":row[2]})
+        return response

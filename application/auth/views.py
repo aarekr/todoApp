@@ -11,7 +11,7 @@ def all_users():
 
 @app.route("/auth/myprofile")
 def my_profile():
-    return render_template("auth/myprofile.html", my_tasks=User.my_tasks())
+    return render_template("auth/myprofile.html", my_tasks=User.my_tasks(), all_users=User.all_users())
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():

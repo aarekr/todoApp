@@ -27,10 +27,14 @@
 
 {% if current_user.id == 1 %}
   <br /><hr>
-  <p>käyttäjä 1</p>
-  <form method="POST" action="{{ url_for('delete_user', user_id=4) }}">
-    <input type="submit" value="Remove user 4" style="width:150px"/>
-  </form>
+  {% if all_users is defined %}
+    {% for user in all_users %}
+      {{ user.id }} {{ user.name }}
+        <form method="POST" action="{{ url_for('delete_user', user_id=user.id) }}">
+          <input type="submit" value="Remove user" style="width:120px"/>
+        </form>      
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 {% endblock %}

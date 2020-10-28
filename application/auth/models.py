@@ -80,3 +80,14 @@ class User(Base):
         for row in res:
             response.append({"id":row[0], "task":row[1], "done":row[2]})
         return response
+
+#    @staticmethod # tasks per user
+#    def tasks_per_user():
+#        stmt = text("SELECT Account_id, Task.name FROM Task")
+#        res = db.engine.execute(stmt)
+#        response = []
+#        total_users = text("SELECT COUNT() FROM Account")
+#        print("Total users:", total_users)
+#        for row in res:
+#            response.append(Account_id, 
+#        return response

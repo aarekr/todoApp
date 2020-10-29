@@ -13,18 +13,21 @@
     <tr>
       <th>Task</th>
       <th>Done</th>
-      <th><center>Change</center></th>
+      <th><center>Change status</center></th>
+      <th><center>Take ownership</center></th>
     </tr>
     {% for task in tasks %}
     <tr>
       <td>{{ task.name }}</td>
       <td>{% if task.done == 1 %} Done {% else %} Undone {% endif %}</td>
       <td>{% if current_user.is_authenticated and current_user.id == task.account_id %}
-	<form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
-	  <input type="submit" value="Change status"/>
-	</form>
-          {% endif %}
-      </td>
+            <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
+              <input type="submit" value="Change status"/>
+            </form>
+          {% endif %}</td>
+      <td><form method="POST" action="{{ url_for('tasks_take_ownership', user_id=current_user.id) }}">
+            <center><input type="submit" value="I will do it!"/></center>
+          </form></td>
     </tr>
     {% endfor %}
   </table>

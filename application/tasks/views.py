@@ -41,3 +41,11 @@ def tasks_set_done(task_id):
 
     db.session().commit()
     return redirect(url_for("tasks_index"))
+
+@app.route("/changetaskowner/<user_id>/", methods=["POST"])
+@login_required
+def tasks_take_ownership(user_id):
+#    print("*****Task: " + task2_id)
+    print("*****User: " + user_id)
+
+    return redirect(url_for("tasks_index"))
